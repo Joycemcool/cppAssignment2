@@ -39,10 +39,10 @@ Student::Student(const Student& other) : name(other.name), numCourses(other.numC
 
 // Destructor
 Student::~Student() {
+    cout<<"Dynamically allocated courseList is destroyed"<<endl;
     delete[] courseList;
 }
 
-//TODO:Solution implements a correctly functioning overloaded assignment operator. How to overload
 Student& Student::operator=(const Student& other) {
 
     cout<<"Create the third student (student3) by using the custom assignment operator"<<endl;
@@ -58,9 +58,6 @@ Student& Student::operator=(const Student& other) {
         if (other.numCourses > 0) {
             courseList = new string[other.numCourses];
             //TODO: Is this satisfy Implements a 'dynamic' array
-            // i.e. declared on the Heap that is manually 'resized' to demonstrate the concept of
-            // a 'deep copy'
-
             for (int i = 0; i < other.numCourses; ++i) {
                 courseList[i] = other.courseList[i];
             }
@@ -73,6 +70,7 @@ Student& Student::operator=(const Student& other) {
 // Add a course to the student's list
 void Student::addCourse(const string& course) {
     string* newCourseList = new string[numCourses + 1];
+    cout<<"A dynamically declared (on heap) array of strings used to store the names of classes \n"<<endl;
     for (int i = 0; i < numCourses; ++i) {
         newCourseList[i] = courseList[i];
     }
@@ -92,18 +90,30 @@ void Student::resetCourses() {
 
 // Print student's name and courses
 void Student::print() const {
-    //TODO: Student class contains one 'print()' method that outputs the name and list of all
-    // courses and one overloaded use of << to do same.
     cout<<"Print Method: student name and course list"<<endl;
     cout << "Name: " << name << endl;
     cout << "Number of Courses: " << numCourses << endl;
-    cout << "Courses: ";
     if(numCourses == 0){
-        cout << "Not Available\n";
+        cout << "Courses Not Available\n";
     }
     cout << "";
     for (int i = 0; i < numCourses; ++i) {
-        cout << courseList[i] << endl;
+        cout <<"Course " <<(i+1) <<" " + courseList[i] << endl;
     }
+}
+
+// Friend function to overload the << operator for Student objects
+ostream& operator<<(ostream& os, const Student& student) {
+    cout<<"Friend function to overload the << operator"<<endl;
+    os << "Name: " << student.name << endl;
+    os << "Number of Courses: " << student.numCourses << endl;
+//    os << "Courses: ";
+    if (student.numCourses == 0) {
+        os << "Not Available\n";
+    }
+    for (int i = 0; i < student.numCourses; ++i) {
+        os << "Course " <<(i+1) <<" "+student.courseList[i] << endl;
+    }
+    return os;
 }
 

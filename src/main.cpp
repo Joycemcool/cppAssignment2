@@ -1,17 +1,33 @@
 #include <iostream>
-#include <regex>
 #include <algorithm>
+#include <string>
 #include "../inc/Student.h"  // Include the Student header
 
 using namespace std;
 
-//Helper function
-
+//Helper function - check input
 bool isNullOrWhitespace(const std::string& str) {
     return str.empty()
            || std::all_of(str.begin(), str.end(), [](char c) {
         return std::isspace(static_cast<unsigned char>(c));
     });
+}
+
+// Function to trim leading and trailing spaces from a string
+std::string trim(const std::string& str) {
+    size_t first = str.find_first_not_of(' ');
+    if (first == std::string::npos) {
+        return "";  // The string is all spaces
+    }
+    size_t last = str.find_last_not_of(' ');
+    return str.substr(first, (last - first + 1));
+}
+
+// Function to convert a string to lowercase
+std::string toLower(const std::string& str) {
+    std::string result = str;
+    std::transform(result.begin(), result.end(), result.begin(), ::tolower);
+    return result;
 }
 
 int main() {
@@ -34,7 +50,6 @@ int main() {
         student1 = Student();
         student1.setName(name1);
         //student1 = Student(name1);
-
 
         do {
             cout << "Enter a course for student 1 (or 'exit' to finish): ";
@@ -73,6 +88,7 @@ int main() {
 
         // Create the third student (student3) by using the custom assignment operator
         Student student3;
+        cout << "Student 3 (using the assignment operator):\n";        //student3.print();
         student3 = student2;
 
         string name3;
@@ -81,19 +97,29 @@ int main() {
         student3.setName(name3);
 
         // Display the third student (student 3)
-        cout << "Student 3 (using the assignment operator):\n";
-        student3.print();
+        cout << student3;
 
         cout<<"Do you want to continue? (yes/no): ";
+        cin>>Continue;
+        // Trim leading and trailing spaces and convert to lowercase
+        if(!Continue.empty()){
+            Continue = trim(Continue);
+            Continue = toLower(Continue);
+            if(Continue== "yes" ){
+                cout<<"Allow looping back or exit"<<endl;
+                //student3.~Student();
+                //Destructor altomatically call.
+                continue;
 
-        cin>> Continue;
-        if(Continue == "yes"){
-            cout<<"Allow looping back or exit"<<endl;
-            continue;
+            } else
+            {
+                cout<<"Thank you"<<endl;
+                break;
+            }
         }
-        else{
-            break;
-        }
+//        else{
+//            break;
+//        }
     }
 
     return 0;

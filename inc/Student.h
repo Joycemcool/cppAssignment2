@@ -45,5 +45,4 @@ public:
 
 };
 
-
 #endif //UNTITLED1_STUDENT_H
