@@ -23,6 +23,9 @@ public:
     Student(const string& name); // Constructor with name
     Student(const Student& other); // Copy constructor
 
+    //Methods
+    void setName(const string& newName);
+
     // Destructor
     ~Student();
 

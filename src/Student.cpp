@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <conio.h>
+#include <algorithm>
 #include "../inc/Student.h" // programmer defined header
 using namespace std;
 
@@ -11,6 +12,11 @@ using namespace std;
 Student::Student() : name(""), numCourses(0), courseList(nullptr) {
     cout<<"Call default constructor"<<endl;
     //Need to call this method
+}
+
+//Set name for the default constructor
+void Student::setName(const string& newName) {
+    name = newName;
 }
 
 // TODO: IS THIS STRING CONSTRUCTOR Constructor with name
@@ -36,9 +42,11 @@ Student::~Student() {
     delete[] courseList;
 }
 
-//TODO:Solution implements a correctly functioning overloaded assignment operator.
-// Assignment operator - don't understand this
+//TODO:Solution implements a correctly functioning overloaded assignment operator. How to overload
 Student& Student::operator=(const Student& other) {
+
+    cout<<"Create the third student (student3) by using the custom assignment operator"<<endl;
+
     if (this != &other) {
         delete[] courseList; //Deallocate the memory used by the current courseList
 
@@ -98,3 +106,4 @@ void Student::print() const {
         cout << courseList[i] << endl;
     }
 }
+
