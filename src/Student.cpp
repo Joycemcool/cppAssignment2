@@ -39,7 +39,10 @@ Student::Student(const Student& other) : name(other.name), numCourses(other.numC
 // Destructor
 Student::~Student() {
     cout<<"Dynamically allocated courseList is destroyed"<<endl;
-    delete[] courseList;
+    //If delete null pointer, crash
+    if (courseList != nullptr){
+        delete[] courseList;
+    }
 }
 //Overloaded Assignment Operator
 Student& Student::operator=(const Student& other) {

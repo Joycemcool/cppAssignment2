@@ -7,7 +7,7 @@
 
 #include <string>
 #include <iostream>
-//TODO: Solution implements header files with appropriate pre-processor directives and guards.
+//Solution implements header files with appropriate pre-processor directives and guards.
 using namespace std;
 
 class Student{
@@ -23,13 +23,13 @@ public:
     Student(const string& name); // Constructor with name
     Student(const Student& other); // Copy constructor
 
-    //Methods
+    //Methods setName
     void setName(const string& newName);
 
     // Destructor
     ~Student();
 
-    // Assignment operator
+    //Assignment operator
     Student& operator=(const Student& other);
 
     // Add a course
@@ -41,6 +41,7 @@ public:
     // Reset courses and courseList
     void resetCourses();
 
+    //Overload operator <<
     friend ostream& operator<<(ostream& os, const Student& student);
 
 };

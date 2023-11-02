@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <string>
 #include <limits>
-#include "../inc/Student.h"  // Include the Student header
+#include "../inc/Student.h"  //Include the Student header
 
 using namespace std;
 
@@ -45,7 +45,6 @@ int main() {
             getline(cin,name1);
         } while(isNullOrWhitespace(name1));
 
-        //student1 = Student();
         student1.setName(name1);
         //student1 = Student(name1);
 
@@ -82,6 +81,8 @@ int main() {
         // Display the first student (student1) after resetting courses
         cout << "\nStudent 1 (after resetting courses):\n";
         student1.print();
+
+        student2.print();
 
         // Create the third student (student3) by using the custom assignment operator
         Student student3;
