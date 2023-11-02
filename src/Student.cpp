@@ -15,13 +15,13 @@ Student::Student() : name(""), numCourses(0), courseList(nullptr) {
 
 //Set name
 void Student::setName(const string& newName) {
+    cout<<"Call setName method "<<endl;
     name = newName;
 }
 
-// TODO: IS THIS STRING CONSTRUCTOR Constructor with name
+//STRING Constructor with name
 Student::Student(const string& studentName) : name(studentName), numCourses(0), courseList(nullptr) {
     cout<<"\nCall string constructor"<<endl;
-
 }
 
 // Copy constructor
@@ -41,7 +41,7 @@ Student::~Student() {
     cout<<"Dynamically allocated courseList is destroyed"<<endl;
     delete[] courseList;
 }
-
+//Overloaded Assignment Operator
 Student& Student::operator=(const Student& other) {
 
     cout<<"\nCreate the third student (student3) by using the custom assignment operator"<<endl;
@@ -52,7 +52,6 @@ Student& Student::operator=(const Student& other) {
         //Copy the name and the number of courses from the other student
         name = other.name;
         numCourses = other.numCourses;
-
 
         if (other.numCourses > 0) {
             courseList = new string[other.numCourses];
@@ -68,13 +67,13 @@ Student& Student::operator=(const Student& other) {
 
 // Add a course to the student's list
 void Student::addCourse(const string& course) {
-    string* newCourseList = new string[numCourses + 1];
+    string* addCourseList = new string[numCourses + 1];
     for (int i = 0; i < numCourses; ++i) {
-        newCourseList[i] = courseList[i];
+        addCourseList[i] = courseList[i];
     }
-    newCourseList[numCourses] = course;
+    addCourseList[numCourses] = course;
     delete[] courseList;
-    courseList = newCourseList;
+    courseList = addCourseList;
     numCourses++;
 }
 

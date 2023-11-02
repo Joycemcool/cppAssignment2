@@ -36,18 +36,14 @@ int main() {
     string Continue;
 
     while(true){
-        // Create the first student (student1)
+        //Create the first student using default constructor
         Student student1;
         string name1, course;
 
-
-        //create the first student using default constructor
         do{
             cout << "Enter the name of the first student: ";
             getline(cin,name1);
         } while(isNullOrWhitespace(name1));
-
-        // Call default constructor
 
         //student1 = Student();
         student1.setName(name1);
@@ -76,11 +72,9 @@ int main() {
         Student student2 = Student(student1);
         student2.setName(name2);
 
-
         // Display the courses originally from student1 for student2
         cout << "Student 2 (courses originally from Student 1) :\n";
         student2.print();
-
 
         // Reset courses for the first student (student1)
         student1.resetCourses();

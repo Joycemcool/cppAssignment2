@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/joyce/Documents/Code/Courses/cmake-build-debug",
-		"source" : "C:/Users/joyce/Documents/Code/Courses"
+		"build" : "C:/Users/W0471965/CLionProjects/cppAssignment2/cmake-build-debug",
+		"source" : "C:/Users/W0471965/CLionProjects/cppAssignment2"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 5
 	}
 }
