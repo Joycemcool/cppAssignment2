@@ -10,25 +10,24 @@ using namespace std;
 
 // Default constructor
 Student::Student() : name(""), numCourses(0), courseList(nullptr) {
-    cout<<"Call default constructor"<<endl;
-    //Need to call this method
+    cout<<"\nCall default constructor"<<endl;
 }
 
-//Set name for the default constructor
+//Set name
 void Student::setName(const string& newName) {
     name = newName;
 }
 
 // TODO: IS THIS STRING CONSTRUCTOR Constructor with name
 Student::Student(const string& studentName) : name(studentName), numCourses(0), courseList(nullptr) {
-    cout<<"Call string constructor"<<endl;
+    cout<<"\nCall string constructor"<<endl;
 
 }
 
 // Copy constructor
 Student::Student(const Student& other) : name(other.name), numCourses(other.numCourses), courseList(nullptr)
 {
-    cout<<"Call copy constructor"<<endl;
+    cout<<"\nCall copy constructor"<<endl;
     if (other.numCourses > 0) {
         courseList = new string[other.numCourses];
         for (int i = 0; i < other.numCourses; ++i) {
@@ -45,7 +44,7 @@ Student::~Student() {
 
 Student& Student::operator=(const Student& other) {
 
-    cout<<"Create the third student (student3) by using the custom assignment operator"<<endl;
+    cout<<"\nCreate the third student (student3) by using the custom assignment operator"<<endl;
 
     if (this != &other) {
         delete[] courseList; //Deallocate the memory used by the current courseList
@@ -70,7 +69,6 @@ Student& Student::operator=(const Student& other) {
 // Add a course to the student's list
 void Student::addCourse(const string& course) {
     string* newCourseList = new string[numCourses + 1];
-    cout<<"A dynamically declared (on heap) array of strings used to store the names of classes \n"<<endl;
     for (int i = 0; i < numCourses; ++i) {
         newCourseList[i] = courseList[i];
     }
@@ -104,7 +102,7 @@ void Student::print() const {
 
 // Friend function to overload the << operator for Student objects
 ostream& operator<<(ostream& os, const Student& student) {
-    cout<<"Friend function to overload the << operator"<<endl;
+    cout<<"\nFriend function to overload the << operator"<<endl;
     os << "Name: " << student.name << endl;
     os << "Number of Courses: " << student.numCourses << endl;
 //    os << "Courses: ";
